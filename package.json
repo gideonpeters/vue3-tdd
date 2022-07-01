@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "test": "jest --watch"
   },
   "dependencies": {
     "core-js": "^3.8.3",
@@ -14,16 +15,25 @@
   "devDependencies": {
     "@babel/core": "^7.12.16",
     "@babel/eslint-parser": "^7.12.16",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/user-event": "^14.2.1",
+    "@testing-library/vue": "^6.6.0",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
+    "@vue/vue3-jest": "^28.0.1",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^28.1.2",
     "eslint": "^7.32.0",
-    "eslint-plugin-vue": "^8.0.3"
+    "eslint-plugin-vue": "^8.0.3",
+    "jest": "^28.1.2",
+    "jest-environment-jsdom": "^28.1.2"
   },
   "eslintConfig": {
     "root": true,
     "env": {
-      "node": true
+      "node": true,
+      "jest": true
     },
     "extends": [
       "plugin:vue/vue3-essential",
@@ -39,5 +49,22 @@
     "last 2 versions",
     "not dead",
     "not ie 11"
-  ]
+  ],
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "vue"
+    ],
+    "transform": {
+      "^.+\\.vue$": "@vue/vue3-jest",
+      ".*\\.(js)$": "babel-jest"
+    },
+    "testEnvironment": "jsdom",
+    "testEnvironmentOptions": {
+      "customExportConditions": [
+        "node",
+        "node-addons"
+      ]
+    }
+  }
 }
